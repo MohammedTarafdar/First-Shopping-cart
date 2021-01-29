@@ -1,9 +1,10 @@
 
+
 <!DOCTYPE html>
 <html>
 
 <head>
-   <title>First Shopping Cart</title>
+   <title>Advance Way</title>
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -44,9 +45,9 @@
                      </div>
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button  onclick="productCountHandler(false)" class="btn btn-default"><i class="fas fa-minus"></i></button>   <!-- //onclick="productCountHandler(false)"-->
+                           <button  id="item-decrement" class="btn btn-default"><i class="fas fa-minus"></i></button>   <!-- //onclick="productCountHandler(false)"-->
                            <input id="item-count" type="text" class="form-control text-center" value="1">
-                           <button onclick="productCountHandler(true)" class="btn btn-default"><i class="fas fa-plus"></i></button>    <!--// onclick="productCountHandler(true)" -->
+                           <button id="item-increment" class="btn btn-default"><i class="fas fa-plus"></i></button>    <!--// onclick="productCountHandler(true)" -->
                            
                            
                         </div>
@@ -83,8 +84,8 @@
 
 
    <script>
-      // For phone
-      /*
+       // For phone
+        /*
       document.getElementById('phone-increment-btn').addEventListener("click", function(){
          let itemNumber = document.getElementById('number-of-phone');
          let itemCount = parseInt(itemNumber.value);
@@ -103,13 +104,17 @@
          document.getElementById('item-value').innerText = "$" + itemValue;
       });
       */
-   
+      
+      
+      
       document.getElementById('phone-increment-btn').addEventListener("click", function(){
          handleProductChange(true);
+         
       });
       
       document.getElementById('phone-decrement-btn').addEventListener("click", function(){
          handleProductChange(false);
+         
       });
 
       function handleProductChange(isIncrease){
@@ -127,7 +132,7 @@
          document.getElementById('item-value').innerText ="$" + itemValue;
       }
 
-
+      
 
       // for case
 
@@ -140,49 +145,76 @@
          itemCount.value = newItemCount;
          let itemValue = newItemCount * 59;
          document.getElementById("total-value").innerText ="$" + itemValue; 
-      });
-    
 
-      document.getElementById("item-decrement").addEventListener("click", function(){
+      });
       
+      
+      document.getElementById("item-decrement").addEventListener('click', function(){
+        
          let itemCount = document.getElementById('item-count');
          let numberOfItem = parseInt(itemCount.value);
          let newItemCount = numberOfItem - 1;
          itemCount.value = newItemCount;
          let itemValue = newItemCount * 59;
          document.getElementById("total-value").innerText = "$" + itemValue; 
-         
+        
+        
       });
       */
+
+
+      
       document.getElementById("item-increment").addEventListener("click", function(){
          productCountHandler(true);
-   });
- 
-
-   document.getElementById("item-decrement").addEventListener("click", function(){
-      productCountHandler(false);
-   
-   });
+      });
       
+      
+      document.getElementById("item-decrement").addEventListener('click', function(){
+        productCountHandler(false);
+        
+      });
 
-      function productCountHandler(isIncremented){
-         let itemCount = document.getElementById("item-count");
+      
+    
+      function productCountHandler(isIncreased){
+        let itemCount = document.getElementById('item-count');
          let numberOfItem = parseInt(itemCount.value);
          let newItemCount = numberOfItem;
-         if(isIncremented == true){
+         if(isIncreased == true){
             newItemCount = numberOfItem + 1;
          }
-         if(isIncremented == false && itemCount > 0){
+         // problem here, if i use && operator it doesn't work but if i use || operator it will work and takes negative figure
+         else if(isIncreased == false || itemCount > 0){        
             newItemCount = numberOfItem - 1;
          }
          itemCount.value = newItemCount;
          let itemValue = newItemCount * 59;
-         document.getElementById("total-value").innerText ="$" + itemValue;
+         document.getElementById("total-value").innerText = "$" + itemValue; 
+      }
 
+      /*
+      // when i am using && operator it does not working but if i use || operator that time it working [line no. 204]
+
+      function productCountHandler(isIncreased){
+        let itemCount = document.getElementById('item-count');
+         let numberOfItem = parseInt(itemCount.value);
+         let newItemCount = numberOfItem;
+         if(isIncreased == true){
+            newItemCount = numberOfItem + 1;
+         }
+         if(isIncreased == false || itemCount > 0){
+            newItemCount = numberOfItem - 1;
+         }
+         itemCount.value = newItemCount;
+         let itemValue = newItemCount * 59;
+         document.getElementById("total-value").innerText = "$" + itemValue; 
       }
 
 
+      */
 
+
+    
 
 
    </script>

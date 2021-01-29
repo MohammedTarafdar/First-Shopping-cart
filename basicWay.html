@@ -1,9 +1,10 @@
 
+
 <!DOCTYPE html>
 <html>
 
 <head>
-   <title>First Shopping Cart</title>
+   <title>Basic Way to work</title>
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -44,9 +45,9 @@
                      </div>
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button  onclick="productCountHandler(false)" class="btn btn-default"><i class="fas fa-minus"></i></button>   <!-- //onclick="productCountHandler(false)"-->
+                           <button  id="item-decrement" class="btn btn-default"><i class="fas fa-minus"></i></button>   
                            <input id="item-count" type="text" class="form-control text-center" value="1">
-                           <button onclick="productCountHandler(true)" class="btn btn-default"><i class="fas fa-plus"></i></button>    <!--// onclick="productCountHandler(true)" -->
+                           <button  id="item-increment" class="btn btn-default"><i class="fas fa-plus"></i></button>   
                            
                            
                         </div>
@@ -66,8 +67,8 @@
                      </div>
 
                      <div class="col-md-4 status">
-                        <h5 id="total-price">$1,278</h5>
-                        <h5>$0</h5>
+                        <h5 id="">$1,278</h5>
+                        <h5 id="">$0</h5>
                         <h5 id="">$1,278</h5>
                      </div>
                   </div>
@@ -83,8 +84,8 @@
 
 
    <script>
-      // For phone
-      /*
+       // For phone
+      
       document.getElementById('phone-increment-btn').addEventListener("click", function(){
          let itemNumber = document.getElementById('number-of-phone');
          let itemCount = parseInt(itemNumber.value);
@@ -102,36 +103,11 @@
          let itemValue = newItemCount * 1219;
          document.getElementById('item-value').innerText = "$" + itemValue;
       });
-      */
-   
-      document.getElementById('phone-increment-btn').addEventListener("click", function(){
-         handleProductChange(true);
-      });
       
-      document.getElementById('phone-decrement-btn').addEventListener("click", function(){
-         handleProductChange(false);
-      });
-
-      function handleProductChange(isIncrease){
-         let itemNumber = document.getElementById('number-of-phone');
-         let itemCount = parseInt(itemNumber.value);
-         let newItemCount = itemCount;
-         if(isIncrease == true){
-            newItemCount = itemCount + 1;
-         }
-         if(isIncrease == false && itemCount > 0){
-            newItemCount = itemCount - 1;
-         }
-         itemNumber.value = newItemCount;
-         let itemValue = newItemCount * 1219;
-         document.getElementById('item-value').innerText ="$" + itemValue;
-      }
-
-
 
       // for case
 
-      /*
+      
       document.getElementById("item-increment").addEventListener("click", function(){
       
          let itemCount = document.getElementById("item-count");
@@ -140,8 +116,9 @@
          itemCount.value = newItemCount;
          let itemValue = newItemCount * 59;
          document.getElementById("total-value").innerText ="$" + itemValue; 
+        
       });
-    
+      
 
       document.getElementById("item-decrement").addEventListener("click", function(){
       
@@ -153,37 +130,7 @@
          document.getElementById("total-value").innerText = "$" + itemValue; 
          
       });
-      */
-      document.getElementById("item-increment").addEventListener("click", function(){
-         productCountHandler(true);
-   });
- 
-
-   document.getElementById("item-decrement").addEventListener("click", function(){
-      productCountHandler(false);
-   
-   });
-      
-
-      function productCountHandler(isIncremented){
-         let itemCount = document.getElementById("item-count");
-         let numberOfItem = parseInt(itemCount.value);
-         let newItemCount = numberOfItem;
-         if(isIncremented == true){
-            newItemCount = numberOfItem + 1;
-         }
-         if(isIncremented == false && itemCount > 0){
-            newItemCount = numberOfItem - 1;
-         }
-         itemCount.value = newItemCount;
-         let itemValue = newItemCount * 59;
-         document.getElementById("total-value").innerText ="$" + itemValue;
-
-      }
-
-
-
-
+    
 
    </script>
 </body>
